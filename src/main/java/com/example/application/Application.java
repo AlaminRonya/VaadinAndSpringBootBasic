@@ -15,10 +15,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-@Theme(value = "myapp")
-@PWA(name = "My App", shortName = "My App", offlineResources = {})
-@NpmPackage(value = "line-awesome", version = "1.3.0")
-@NpmPackage(value = "@vaadin-component-factory/vcf-nav", version = "1.0.6")
+//@Theme(value = "myapp")
+//@PWA(name = "My App", shortName = "My App", offlineResources = {})
+//@NpmPackage(value = "line-awesome", version = "1.3.0")
+//@NpmPackage(value = "@vaadin-component-factory/vcf-nav", version = "1.0.6")
 public class Application implements AppShellConfigurator {
 
     public static void main(String[] args) {
