@@ -6,7 +6,6 @@ import com.example.application.backend.repository.CompanyRepository;
 import com.example.application.backend.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -26,6 +25,12 @@ public class ContactService {
 
     public List<Contact> getAllContact(){
         return contactRepository.findAll();
+    }
+    public List<Contact> getAllContact(String value){
+        if (value == null || value.isEmpty()){
+            return contactRepository.findAll();
+        }
+        return contactRepository.search(value);
     }
 
     public Long getCount(){

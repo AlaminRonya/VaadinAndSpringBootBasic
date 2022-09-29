@@ -9,8 +9,11 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
+
 
 @Route("")
 public class MainView extends VerticalLayout {
@@ -28,6 +31,7 @@ public class MainView extends VerticalLayout {
     // TODO: Second Coding View Front Page
 
     Grid<Contact> grid = new Grid<>(Contact.class);
+    TextField textField = new TextField();
 
     private final ContactService contactService;
 
@@ -36,12 +40,20 @@ public class MainView extends VerticalLayout {
         addClassName("list-view");
         setSizeFull();
         configureGrid();
-        add(grid);
+        configureFilter();
+        add(textField, grid);
         updateList();
     }
 
+    private void configureFilter() {
+        textField.setPlaceholder("Filter by name...");
+        textField.setClearButtonVisible(true);
+        textField.setValueChangeMode(ValueChangeMode.LAZY);
+        textField.addValueChangeListener(e->updateList());
+    }
+
     private void updateList() {
-        grid.setItems(contactService.getAllContact());
+        grid.setItems(contactService.getAllContact(textField.getValue()));
     }
 
     private void configureGrid() {
