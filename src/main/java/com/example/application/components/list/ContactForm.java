@@ -75,6 +75,7 @@ public class ContactForm extends FormLayout {
         delete.addClickListener(click -> new DeleteEvent(this, binder.getBean()));
         close.addClickListener(click -> new CloseEvent(this));
 
+
         binder.addStatusChangeListener(evt ->save.setEnabled(binder.isValid()));
 
         return new HorizontalLayout(save,delete,close);

@@ -15,9 +15,12 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+import javax.annotation.security.PermitAll;
+
 
 @Route(value = "", layout = MainLayout.class)
 @PageTitle("Contacts | Vaadin CRM")
+@PermitAll
 public class ListView extends VerticalLayout {
 //    private Button button = new Button("Click Me");
 //    private DatePicker datePicker = new DatePicker("Pick the Date");
